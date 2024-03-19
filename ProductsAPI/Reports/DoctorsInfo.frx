@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/25/2024 17:52:42" ReportInfo.Modified="04/25/2024 18:08:00" ReportInfo.CreatorVersion="2024.1.10.0">
+  <Styles Name="Gray">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Fill.Color="Gainsboro" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Fill.Color="Gainsboro" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqJUrEa/KIcQqhhcfnlqC6PC6b70ltOmTeLWh2vhAF0ivYvQZbcY/A8qTXhAWsZJeFGEPA9xrXyYOG3aFk4+m5VPGyy+ZnUL+S1v9YLHf8FCHIJCbFrzY9QvHrcfXtynJuzHFFE1bXxDw/D9JZ5KpPAXsyk4O+1TEn89lM+W1twc8v6ivMou1oz52sRmTS0bY0Fp6fFbrwEc0OUSLV/vcEdA==" ConnectionStringExpression="[dbCon]">
+      <TableDataSource Name="Doctors" DataType="System.Int32" Enabled="true" TableName="Doctors">
+        <Column Name="DoctorId" DataType="System.Int32"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="Specialization" DataType="System.String"/>
+        <Column Name="ContactNo" DataType="System.String"/>
+        <Column Name="Email" DataType="System.String"/>
+        <Column Name="Schedule" DataType="System.String"/>
+        <Column Name="Shift" DataType="System.Int32"/>
+        <Column Name="Image" DataType="System.String"/>
+        <Column Name="DepartmentID" DataType="System.Int32"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="dbCon" DataType="System.String" AsString=""/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Width="718.2" Height="37.8" Dock="Fill" Text="Doctors" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" Style="Title"/>
+    </ReportTitleBand>
+    <GroupHeaderBand Name="GroupHeader1" Top="41.8" Width="718.2" Height="18.9" Condition="[Doctors.DepartmentID]">
+      <TextObject Name="Text20" Width="718.2" Height="18.9" Dock="Fill" Text="[Doctors.DepartmentID]" Font="Arial, 10pt, style=Bold" Style="Group"/>
+      <DataBand Name="Data1" Top="64.7" Width="718.2" Height="151.2" DataSource="Doctors">
+        <TextObject Name="Text2" Width="103.95" Height="18.9" Fill.Color="Gainsboro" Text="DoctorId" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text3" Left="103.95" Width="614.25" Height="18.9" Text="[Doctors.DoctorId]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text4" Top="18.9" Width="103.95" Height="18.9" Fill.Color="Gainsboro" Text="Name" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text5" Left="103.95" Top="18.9" Width="614.25" Height="18.9" Text="[Doctors.Name]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text6" Top="37.8" Width="103.95" Height="18.9" Fill.Color="Gainsboro" Text="Specialization" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text7" Left="103.95" Top="37.8" Width="614.25" Height="18.9" Text="[Doctors.Specialization]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text8" Top="56.7" Width="103.95" Height="18.9" Fill.Color="Gainsboro" Text="ContactNo" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text9" Left="103.95" Top="56.7" Width="614.25" Height="18.9" Text="[Doctors.ContactNo]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text10" Top="75.6" Width="103.95" Height="18.9" Fill.Color="Gainsboro" Text="Email" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text11" Left="103.95" Top="75.6" Width="614.25" Height="18.9" Text="[Doctors.Email]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text12" Top="94.5" Width="103.95" Height="18.9" Fill.Color="Gainsboro" Text="Schedule" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text13" Left="103.95" Top="94.5" Width="614.25" Height="18.9" Text="[Doctors.Schedule]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text14" Top="113.4" Width="103.95" Height="18.9" Fill.Color="Gainsboro" Text="Shift" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text15" Left="103.95" Top="113.4" Width="614.25" Height="18.9" Text="[Doctors.Shift]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text16" Top="132.3" Width="103.95" Height="18.9" Fill.Color="Gainsboro" Text="Image" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text17" Left="103.95" Top="132.3" Width="614.25" Height="18.9" Text="[Doctors.Image]" Font="Arial, 10pt" Style="Data"/>
+      </DataBand>
+      <GroupFooterBand Name="GroupFooter1" Top="219.9" Width="718.2" Height="18.9"/>
+    </GroupHeaderBand>
+    <PageFooterBand Name="PageFooter1" Top="242.8" Width="718.2" Height="18.9">
+      <TextObject Name="Text21" Width="718.2" Height="18.9" Dock="Fill" Fill.Color="Gainsboro" Text="[PageN]" HorzAlign="Right" Font="Arial, 10pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
