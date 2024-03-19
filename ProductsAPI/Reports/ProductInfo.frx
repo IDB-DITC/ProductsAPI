@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="03/30/2024 14:38:41" ReportInfo.Modified="04/23/2024 17:48:30" ReportInfo.CreatorVersion="2024.1.10.0">
+  <Styles Name="Standard">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <MsSqlDataConnection Name="ProductDbConnection" ConnectionString="rijcmlq+rW0RkboK+/8CKGGYUID3ctBV8q9SvKYxl3iiE7vBnh7Tgou0+4WFf3NfmPSvHVFVoXziUP/fOURQrWXMyrTvMw+L7GjBUncIgMluiX5fwSeaXtH5OorVTjJAA8CCNFoIhB+lTjnuPpHKvkLOjjpnpQ+Ml6pQv1ye8upPCOlmOCTsrTttL99HspuMr/QuwPa+pUGMgXw4BB0DR2WqU5J1H1nsLO9vB9ZmqxolPmVNPA=" ConnectionStringExpression="[CONN]">
+      <TableDataSource Name="Product" DataType="System.Int32" Enabled="true" TableName="Product" SelectCommand="exec getProducts @catId">
+        <Column Name="ProductID" DataType="System.Int32"/>
+        <Column Name="Name" DataType="System.String"/>
+        <Column Name="ProductNumber" DataType="System.String"/>
+        <Column Name="Color" DataType="System.String"/>
+        <Column Name="StandardCost" DataType="System.Decimal"/>
+        <Column Name="ListPrice" DataType="System.Decimal"/>
+        <Column Name="Size" DataType="System.Int32"/>
+        <Column Name="Weight" DataType="System.Decimal"/>
+        <Column Name="ProductCategoryID" DataType="System.Int32"/>
+        <CommandParameter Name="CONN" DataType="22" DefaultValue="0"/>
+        <CommandParameter Name="catId" DataType="8" Expression="[CatID]" DefaultValue="18"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="CONN" DataType="System.String" AsString=""/>
+    <Parameter Name="CatID" DataType="System.String" AsString=""/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Width="718.2" Height="37.8" Dock="Fill" Text="Product" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" Style="Title"/>
+    </ReportTitleBand>
+    <GroupHeaderBand Name="GroupHeader1" Top="41.8" Width="718.2" Height="18.9" Condition="[Product.ProductCategoryID]">
+      <TextObject Name="Text20" Width="718.2" Height="18.9" Dock="Fill" Text="[Product.ProductCategoryID]" Font="Arial, 10pt, style=Bold" Style="Group"/>
+      <DataBand Name="Data1" Top="64.7" Width="718.2" Height="179.55" DataSource="Product">
+        <TextObject Name="Text2" Width="141.75" Height="18.9" Text="ProductID" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text3" Left="141.75" Width="576.45" Height="18.9" Text="[Product.ProductID]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text4" Top="18.9" Width="141.75" Height="18.9" Text="Name" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text5" Left="141.75" Top="18.9" Width="576.45" Height="18.9" Text="[Product.Name]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text6" Top="37.8" Width="141.75" Height="18.9" Text="ProductNumber" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text7" Left="141.75" Top="37.8" Width="576.45" Height="18.9" Text="[Product.ProductNumber]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text8" Top="56.7" Width="141.75" Height="18.9" Text="Color" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text9" Left="141.75" Top="56.7" Width="576.45" Height="18.9" Text="[Product.Color]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text10" Top="75.6" Width="141.75" Height="18.9" Text="StandardCost" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text11" Left="141.75" Top="75.6" Width="576.45" Height="18.9" Text="[Product.StandardCost]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text12" Top="94.5" Width="141.75" Height="18.9" Text="ListPrice" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text13" Left="141.75" Top="94.5" Width="576.45" Height="18.9" Text="[Product.ListPrice]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text14" Top="113.4" Width="141.75" Height="18.9" Text="Size" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text15" Left="141.75" Top="113.4" Width="576.45" Height="18.9" Text="[Product.Size]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text16" Top="132.3" Width="141.75" Height="18.9" Text="Weight" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text17" Left="141.75" Top="132.3" Width="576.45" Height="18.9" Text="[Product.Weight]" Font="Arial, 10pt" Style="Data"/>
+        <TextObject Name="Text18" Top="151.2" Width="141.75" Height="18.9" Text="ProductCategoryID" Font="Arial, 10pt, style=Bold" Style="Header"/>
+        <TextObject Name="Text19" Left="141.75" Top="151.2" Width="576.45" Height="18.9" Text="[Product.ProductCategoryID]" Font="Arial, 10pt" Style="Data"/>
+      </DataBand>
+      <GroupFooterBand Name="GroupFooter1" Top="248.25" Width="718.2" Height="18.9"/>
+    </GroupHeaderBand>
+    <PageFooterBand Name="PageFooter1" Top="271.15" Width="718.2" Height="18.9">
+      <TextObject Name="Text21" Width="718.2" Height="18.9" Dock="Fill" Text="[PageN]" HorzAlign="Right" Font="Arial, 10pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
