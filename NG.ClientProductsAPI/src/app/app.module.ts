@@ -42,6 +42,6 @@ import { TextBoxModule, UploaderModule } from '@syncfusion/ej2-angular-inputs';
     provideAnimations(),
     provideHttpClient(withInterceptors([authInterceptor])),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, ]
 })
 export class AppModule { }

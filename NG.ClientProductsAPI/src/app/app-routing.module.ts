@@ -1,5 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+  withHashLocation,
+  withInMemoryScrolling,
+  withRouterConfig,
+  withViewTransitions
+} from '@angular/router';
 import { ListProductComponent } from './Components/list-product/list-product.component';
 import { AddProductComponent } from './Components/add-product/add-product.component';
 import { EditProductComponent } from './Components/edit-product/edit-product.component';

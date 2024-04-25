@@ -16,7 +16,7 @@ export class ListProductComponent {
 
   public editSettings?: EditSettingsModel;
 
-  public pageSettings: PageSettingsModel={ pageSize: 5 };
+  public pageSettings: PageSettingsModel = { pageSize: 5 };
   public filterSettings: FilterSettingsModel = { type: 'FilterBar' };
 
 
@@ -36,11 +36,8 @@ export class ListProductComponent {
 
   private service = inject(ProductService);
   private reportService = inject(ProductReportService);
-  //constructor(private service2 : ProductService) {
 
-  //}
 
- 
 
 
   ngOnInit(): void {
@@ -49,8 +46,7 @@ export class ListProductComponent {
     this.selectionOptions = { mode: 'Row', type: 'Single' };
     this.searchOptions = { fields: ['productCategoryID', 'name'], operator: 'contains', ignoreCase: true, ignoreAccent: true };
   }
-  LoadData()
-  {
+  LoadData() {
     this.service.GetProducts().subscribe((response: ProductCategory[]) => {
       this.ProductCategory = response;
       //console.log(response);
@@ -79,22 +75,19 @@ export class ListProductComponent {
 
 
 
-  DeleteProduct(product: ProductCategory)
-  {
+  DeleteProduct(product: ProductCategory) {
     let confirmDelete: boolean = confirm(`Delete: ${product.name}?`);
     if (confirmDelete) {
       this.service.DeleteProduct(product.productCategoryID).subscribe(() => {
         this.LoadData();
       },
-        (error) =>
-        {
+        (error) => {
           console.log('Observable emitted an error:' + error);
         });
     }
   }
 
-
-  LoadReport(id:number) {
+  LoadReport(id: number) {
 
     this.reportService.GetReport(id).subscribe((data) => {
 
@@ -114,8 +107,5 @@ export class ListProductComponent {
     downloadLink.download = fileName;
     downloadLink.click();
   }
-
-
-
 
 }

@@ -16,45 +16,29 @@ namespace ProductsAPI.Controllers
 	public class WebReportController : ControllerBase
 	{
 
-
-		private readonly ProductsAPIContext _context;
 		private readonly IWebHostEnvironment _webHost;
 		private FastReport.Export.Image.ImageExport imgExp;
 		private FastReport.Export.PdfSimple.PDFSimpleExport pdfExp;
 
-		public WebReportController(ProductsAPIContext context, IWebHostEnvironment webHost)
+		public WebReportController( IWebHostEnvironment webHost)
 		{
-			_context = context;
 			_webHost = webHost;
 		}
 
 		[HttpGet("{id:int?}")]
 		//[Route("get")]
-		public ActionResult<string?> Get(int id=0)
+		public ActionResult<string?> Get(int id)
 		{
 			try
 			{
-				//Report report = new();
-
-				//report.RegisterData(_context.Product.ToList(), "Products");
-
-
 				WebReport webReport = new WebReport();
 
 				webReport.Report.Load(_webHost.ContentRootPath + "\\Reports\\ProductInfo.frx");
 
-
-
-
 				MsSqlDataConnection sqlConnection = new MsSqlDataConnection();
-
-				//sqlConnection.ConnectionString = _context.Database.GetConnectionString();
 
 
 				sqlConnection.ConnectionString = "Server=.;Database=ProductsDbContext-55;Trusted_Connection=True;MultipleActiveResultSets=true;";
-
-				//sqlConnection.CreateAllTables();
-				//webReport.Report.Dictionary.Connections.Add(sqlConnection);
 
 
 				webReport.Report.SetParameterValue("CONN", sqlConnection.ConnectionString);
@@ -62,24 +46,8 @@ namespace ProductsAPI.Controllers
 
 				webReport.Report.SetParameterValue("CatID", id);
 
-
-
-
-				//MsSqlDataConnection connection = new MsSqlDataConnection();
-
-				//connection.ConnectionString = "";
-				//WebReport WebReport = new WebReport();
-				//WebReport.Width = "1000";
-				//WebReport.Height = "1000";
-
-				//WebReport.Report.Load(Environment.CurrentDirectory + "/Reports/ProductInfo.frx"); //Loading a report into a WebReport object
-
-				//webReport.Report.RegisterData(_context.Product.ToList(), "Product"); //Registering a data source in a report
-
-
 				webReport.Report.Prepare();
 
-				//var html = webReport.Render();
 
 				PDFSimpleExport export = new PDFSimpleExport();
 				string pdf;
@@ -90,9 +58,6 @@ namespace ProductsAPI.Controllers
 				ms.Position = 0;
 				pdfBytes = ms.ToArray();
 
-
-
-				//return WebReport;
 				 pdf = Convert.ToBase64String(pdfBytes);
 				return Ok(pdf);
 			}

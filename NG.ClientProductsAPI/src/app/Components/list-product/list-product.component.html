@@ -24,6 +24,7 @@
         <e-column headerText='Action' width='150' textAlign='Center'>
             <ng-template #template let-data>
                 <div class="btn-group">
+
                     <a [routerLink]="['/ProductCategory/edit/', data.productCategoryID]" class="btn btn-warning">
                         <i class="fa-solid fa-pen-to-square"></i>
                         </a>
@@ -43,12 +44,6 @@
     </ng-template>
 
 </ejs-grid>
-<i class="fa fa-user fa-5x"></i>
-<i class="fa fa-dashboard fa-5x"></i>
-<i class="fa fa-money fa-3x"></i>
-<i class="fa fa-home fa-5x"></i>
-<i class="fa fa-th fa-4x"></i>
-<i class="fa fa-solid fa-download fa-2x"></i>
 <!--
 <table class="table table-bordered table-hover table-responsive">
   <thead>
